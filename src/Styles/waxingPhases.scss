@@ -1,0 +1,111 @@
+//waxing #222 #fff
+
+.waxingStart {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-color: #222;
+  transform: translateZ(0);
+
+  &::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 50%;
+    height: 100%;
+    animation: flipping 4s steps(2);
+    animation-iteration-count: 1;
+  }
+}
+
+.waxingShadow {
+  transform-style: preserve-3d;;
+  width: 100%;
+  height: 100%;
+  animation: rotating 4s linear forwards;
+  animation-iteration-count: 1;
+  transform: translateZ(0);
+
+  &::before,
+  &::after {
+    content: ' ';
+    display: block;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 4s;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  &::before {
+    background-color: #fff;
+  }
+  &::after {
+    background-color: #222;
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes flipping {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.waxingShadowEnd {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  animation: shadowEnding 2s ease-out forwards;
+  transform: translateZ(0);
+
+  &::before,
+  &::after {
+    content: ' ';
+    display: block;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 2s;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  &::before {
+    background-color: #fff;
+  }
+  &::after {
+    background-color: #222;
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+}
+// var(--endDegree)
+@keyframes shadowEnding {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(var(--endDegree));
+  }
+}

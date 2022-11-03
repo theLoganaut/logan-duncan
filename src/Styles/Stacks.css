@@ -1,0 +1,24 @@
+.table-spacing {
+  margin-top: 30px !important;
+}
+
+.number-pos {
+  margin-top: -14px !important;
+}
+
+.background-bar {
+  border-top: 1px solid black;
+  margin-left: 24px;
+  width: "50%";
+}
+
+.equisize {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1em;
+}
+
+.equisize div {
+  /* border: 1px solid black; */
+  /* padding: 0.5em; */
+}

@@ -1,0 +1,112 @@
+// waning
+:root {
+  --endDegree: 60;
+}
+
+.waningStart {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  transform: translateZ(0);
+
+  &::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    width: 50%;
+    height: 100%;
+    animation: flipTheMoon 4s steps(2);
+    animation-iteration-count: 1;
+  }
+}
+
+.waningShadow {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  animation: rotater 4s linear forwards;
+  animation-iteration-count: 1;
+
+  &::before,
+  &::after {
+    content: ' ';
+    display: block;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 4s;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  &::before {
+    background-color: #222;
+  }
+  &::after {
+    background-color: #fff;
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes rotater {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes flipTheMoon {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.waningShadowEnd {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  animation: shadowEnd 2s .1s linear forwards;
+  transition: translateZ(0);
+  perspective: 1000;
+
+  &::before,
+  &::after {
+    content: ' ';
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 4s;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+  &::before {
+    background-color: #222;
+  }
+  &::after {
+    background-color: #fff;
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes shadowEnd {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(var(--endDegree));
+  }
+}
