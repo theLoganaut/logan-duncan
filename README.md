@@ -2,7 +2,7 @@
 
 Built with React, React-Bootstrap, and a dash of React95. 
 
-Far from truly finished, but I wanted more experience on getting from plan to production, then servicing and CI/CD updates once its at a viewable state. 
+Far from truly finished, but I wanted more experience on getting from plan to production, then servicing with CI/CD updates once its at a viewable state. 
 
 All animations are tailored to my website, as are all images seen.
 
