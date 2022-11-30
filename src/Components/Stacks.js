@@ -27,9 +27,10 @@ const Stacks = () => {
           {/* bottom for animation is 18rem, top is below */}
           <Row
             style={{
-              marginTop: "18rem",
+              paddingTop: "18rem",
               alignItems: "center",
               justifyContent: "center",
+              scrollMarginTop: "-5em",
             }}
             id="stacks"
           >

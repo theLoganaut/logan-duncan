@@ -4,9 +4,46 @@
 
 @keyframes slide-to-left {
   0% {
-    margin-left: 100%
+    transform: translateX(30vh);
   }
   100% {
-    margin-left: 0%
+    transform: translateX(0);
+  }
+}
+
+.moonRestartButton {
+  background-color: transparent;
+  border-color: gray;
+  color: gray;
+  animation: fromDisabled 1s forwards
+}
+
+@keyframes fromDisabled {
+  0% { 
+    background-color: transparent;
+    border-color: gray;
+    color: gray;
+  }
+  100% {
+    background-color: transparent;
+    border-color: cornflowerblue;
+    color: cornflowerblue;
+  }
+}
+
+.visor {
+
+}
+
+.visor:hover {
+  animation: visor 1s both
+}
+
+@keyframes visor {
+  0% {
+    opacity: .7;
+  }
+  100% {
+    opacity: 0;
   }
 }

@@ -1,24 +1,58 @@
-import React, { useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Row } from "react-bootstrap";
 import styled, { keyframes } from "styled-components";
+import shortid from "shortid";
+
+const grow = (stringHeight) => keyframes`
+  from {
+    height: 0px;
+  }
+
+  to {
+    height: ${stringHeight}px;
+  }
+`;
+
+const StackBars = styled.div`
+  text-align: center;
+  animation: ${(props) => grow(props.stringHeight)} 2s ease-in-out both;
+  animation-iteration-count: 1;
+  background-color: ${(props) => props.color};
+`;
 
 const StackGraph = ({ currentStacks, setHover }) => {
   let stacks = currentStacks;
   console.log(stacks);
 
+  const getRandomKey = () => {
+    return shortid.generate();
+  };
+
+  // const [beginAnimation, setBeginAnimation] = useState(false);
+  // ? getting the animation to pause when it scrolls to it
   // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
+  //   const inViewport = (entries, observer) => {
+  //     entries.forEach((entry) => {
+  //       entry.target.classList.toggle("OutViewport", entry.isIntersecting);
+  //     });
   //   };
-  // }, [input]);
+
+  //   const Obs = new IntersectionObserver(inViewport);
+  //   const obsOptions = {}; //See: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options
+
+  //   // Attach observer to every [data-inviewport] element:
+  //   const ELs_inViewport = document.querySelectorAll("stack-bars");
+  //   ELs_inViewport.forEach((EL) => {
+  //     Obs.observe(EL, obsOptions);
+  //   });
+  // }, []);
 
   return (
     <div>
-      {stacks?.map((stack, key) => {
+      {stacks?.map((stack) => {
         return (
           <div
-            key={key}
+            key={getRandomKey()}
             id="full-chart-wrap"
             style={{
               marginTop: "3rem",
@@ -37,31 +71,15 @@ const StackGraph = ({ currentStacks, setHover }) => {
                 flexGrow: "1",
               }}
             >
-              {stack.skills.map((s, key) => {
-                //   const growHeight = 33 + 41 * (s.level - 1);
+              {stack?.skills?.map((s) => {
+                const growHeight = 33 + 41 * (s.level - 1);
 
-                //   const stringHeight = growHeight.toString();
-
-                //   const grow = keyframes`
-                //   from {
-                //     height: 0px;
-                //   }
-
-                //   to {
-                //     height: ${stringHeight}px;
-                //   }
-                // `;
-
-                //   const GraphBar = styled.div`
-                //     text-align: center;
-                //     animation: ${grow} 1.2s ease-in-out both;
-                //     animation-iteration-count: 1;
-                //   `;
+                const stringHeight = growHeight.toString();
 
                 return (
                   <div
                     id="skillBox"
-                    key={key}
+                    key={getRandomKey()}
                     style={{
                       position: "relative",
                       marginTop: "-20px",
@@ -95,18 +113,16 @@ const StackGraph = ({ currentStacks, setHover }) => {
                       }}
                     >
                       {" "}
-                      <div
-                        id="skill box grows to meet the row"
+                      {/* {beginAnimation ? <></> : <></>} */}
+                      <StackBars
+                        id="stack-bars"
                         style={{
-                          border: "1px solid",
-                          // 1 = 33, 2 = 74 3 = 115, so its y = 33 + 41(x)
-                          // maxHeight: `calc(33px + 41px * ${
-                          //   s.level - 1
-                          // })`,
-                          // animation: `${grow} 1.2s ease-in-out forwards`,
                           width: "10px",
                         }}
-                      ></div>
+                        // color={s.color}
+                        color={"white"}
+                        stringHeight={stringHeight}
+                      ></StackBars>
                     </div>{" "}
                   </div>
                 );
@@ -114,7 +130,7 @@ const StackGraph = ({ currentStacks, setHover }) => {
               <div
                 id="stack-backgroundRow-container"
                 style={{
-                  zIndex: "1",
+                  zIndex: "-1",
                   overflowX: "hidden",
                   marginTop: "1rem",
                   position: "absolute",

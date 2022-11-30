@@ -1,0 +1,18 @@
+.lightLink {
+  color: white !important;
+  margin-right: 1em;
+  font-size: 140%;
+}
+.circle { 
+  width: 20vw;
+}
+
+.circle:after {
+  border-radius: 50%;
+  position: relative;
+  opacity: .7;
+  background-color: black;
+  content: "";
+  display: flex;
+  padding-bottom: 100%;
+}

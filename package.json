@@ -19,6 +19,7 @@
     "react-use-scroll-snap": "0.0.4",
     "react95": "^3.12.2",
     "scroll-snap": "^4.0.3",
+    "shortid": "^2.2.16",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },

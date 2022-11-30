@@ -2,17 +2,22 @@ import React, { useEffect, useState } from "react";
 import "../Styles/waxingPhases.scss";
 import "../Styles/waningPhases.scss";
 import "../Styles/baseMoon.scss";
+import "../Styles/Animations.css";
+import { Button } from "react-bootstrap";
 
-const LunarPhases = () => {
-  const [moonDegree, setMoonDegree] = useState(140);
+const LunarPhases = ({ restart }) => {
+  const [restartAnim, setRestartAnim] = useState(true);
+
+  const [moonDegree, setMoonDegree] = useState();
 
   const [lunarAge, setLunarAge] = useState();
-
-  const [lunarTitle, setLunarTitle] = useState("test");
 
   const [waneStart, setWaneStart] = useState(false);
 
   const [animOver, setAnimOver] = useState(false);
+
+  // can just use animOver
+  // const [restartReady, setRestartReady] = useState(false);
 
   const LUNAR_MONTH = 29.530588853;
 
@@ -36,6 +41,7 @@ const LunarPhases = () => {
     setMoonDegree(finalMoonDegree);
   };
 
+  //? maybe get a switch working here?
   const getLunarPhase = (age) => {
     if (age < 1.84566) return "New Moon";
     else if (age < 5.53699) return "Waxing Crescent";
@@ -49,6 +55,13 @@ const LunarPhases = () => {
   };
 
   useEffect(() => {
+    if (!restartAnim) {
+      setTimeout(() => {
+        setAnimOver(false);
+        setRestartAnim(true);
+      }, 100);
+    }
+
     const TODAYS_DATE = new Date();
 
     const getLunarAgePercent = (date = new Date()) => {
@@ -122,7 +135,7 @@ const LunarPhases = () => {
     // };
 
     // currentLunarTitle(lunarAge);
-  }, [lunarAge, moonDegree]);
+  }, [moonDegree, restartAnim]);
 
   console.log(moonDegree);
 
@@ -137,11 +150,45 @@ const LunarPhases = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: "3%",
-          marginBottom: "3%",
+          marginTop: "2%",
+          marginBottom: "2%",
         }}
       >
-        {!waneStart ? (
+        <div
+          style={{
+            height: "200px",
+            width: "200px",
+          }}
+        >
+          {waneStart ? (
+            <div
+              id="moon"
+              className={restartAnim ? "waningStart" : "blankMoon"}
+            >
+              {!animOver ? (
+                <div
+                  id="shadow"
+                  className={restartAnim ? "waningShadow" : "blankMoon"}
+                ></div>
+              ) : (
+                <div
+                  id="endShadow"
+                  className={restartAnim ? "waningShadowEnd" : "blankMoon"}
+                ></div>
+              )}
+            </div>
+          ) : (
+            <div id="moon" className={restartAnim ? "waxingStart" : ""}>
+              {!animOver ? (
+                <div id="shadow" className="waxingShadow"></div>
+              ) : (
+                <div id="endShadow" className="waxingShadowEnd"></div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* {waneStart ? (
           <div id="moon" className="waxingStart">
             {!animOver ? (
               <div id="shadow" className="waxingShadow"></div>
@@ -157,8 +204,39 @@ const LunarPhases = () => {
               <div id="endShadow" className="waningShadowEnd"></div>
             )}
           </div>
+        )} */}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {animOver ? (
+          <Button
+            className="moonRestartButton"
+            style={{ marginBottom: "2%" }}
+            onClick={() => setRestartAnim(false)}
+          >
+            Watch again?
+          </Button>
+        ) : (
+          <Button
+            disabled
+            style={{
+              marginBottom: "2%",
+              opacity: "1",
+              backgroundColor: "transparent",
+              borderColor: "gray",
+              color: "gray",
+            }}
+            onClick={() => setRestartAnim(false)}
+          >
+            Watch again?
+          </Button>
         )}
       </div>
+
       <div style={{ textAlign: "center" }}>
         We're currently {lunarAge?.toFixed(1)} days into the lunar cycle,
         currently in the

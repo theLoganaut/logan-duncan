@@ -7,7 +7,8 @@
 }
 
 .background-bar {
-  border-top: 1px solid black;
+  opacity: .5;
+  border-top: 1px solid white;
   margin-left: 24px;
   width: "50%";
 }
@@ -21,4 +22,8 @@
 .equisize div {
   /* border: 1px solid black; */
   /* padding: 0.5em; */
+}
+
+.stack-bars.OutViewport {
+  text-align: center;
 }

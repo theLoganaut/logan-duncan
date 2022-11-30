@@ -7,11 +7,9 @@ import "../Styles/Animations.css";
 import LazyLoad from "react-lazy-load";
 
 const Projects = () => {
-  const melon = "#FF9F85";
   const lightyellow = "#F3EEC3";
   const yellow = "#F4D890";
   const muteRed = "#C08497";
-  const babyBlue = "#A4C8CC";
 
   const testTheme = {
     tokens: {
@@ -114,13 +112,9 @@ const Projects = () => {
 
   return (
     <Container id="projects" style={{ height: "100vh" }}>
-      <Row>
-        <Col>{/* logan spacing */}</Col>
-        <Col>{/* nav spacing */}</Col>
-      </Row>
+      <Row></Row>
       <Row>
         <Col>
-          <Row>{/* for spacing */}</Row>
           <Row
             style={{ marginTop: "18rem", maxWidth: "25vw", marginLeft: "10%" }}
           >

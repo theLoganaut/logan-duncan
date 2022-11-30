@@ -1,11 +1,15 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import mockanaut from "../Images/mockLoganaut.png";
 
 const AboutMe = () => {
   return (
     <section>
-      <Container id="aboutme" style={{ height: "100vh" }}>
+      <Container
+        id="aboutme"
+        style={{
+          height: "100vh",
+        }}
+      >
         <Row>
           <Col>
             <Row>{/* for spacing */}</Row>
@@ -19,7 +23,7 @@ const AboutMe = () => {
                   marginLeft: "30%",
                 }}
               >
-                <div style={{ fontSize: "20px" }}>
+                <div style={{ fontSize: "1vi" }}>
                   <div>
                     and I've always been fascinated by the wonders developers
                     can create. Memory lane is filled with things that can only
@@ -59,31 +63,31 @@ const AboutMe = () => {
                 height: "100%",
                 display: "flex",
                 justifyContent: "center",
-                marginTop: "18rem",
+                marginTop: "15rem",
                 marginLeft: "-5%",
               }}
             >
-              <div
+              <img
+                src="/mockLoganaut.png"
+                alt="My Headshot"
                 style={{
+                  borderRadius: "50%",
                   position: "absolute",
-                  height: "350px",
-                  width: "350px",
-                  verticalAlign: "middle",
-                  border: "2px solid yellow",
-                  marginLeft: "20px",
-                  marginTop: "10px",
+                  width: "20vw",
                 }}
               />
+              <div className="circle visor"></div>
+              {/* 
               <img
                 src="/mockLoganaut.png"
                 alt="My Headshot"
                 style={{
                   position: "absolute",
-                  maxHeight: "350px",
-                  maxWidth: "350px",
+                  maxHeight: "30vh",
+                  maxWidth: "30vw",
                   border: "2px solid red",
                 }}
-              />
+              /> */}
             </div>
           </Col>
         </Row>
