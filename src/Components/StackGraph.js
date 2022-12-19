@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Row, OverlayTrigger, Tooltip } from "react-bootstrap";
 import styled, { keyframes } from "styled-components";
 import shortid from "shortid";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const grow = (stringHeight) => keyframes`
   from {
@@ -28,6 +30,24 @@ const StackGraph = ({ currentStacks, setHover }) => {
     return shortid.generate();
   };
 
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
+
   // const [beginAnimation, setBeginAnimation] = useState(false);
   // ? getting the animation to pause when it scrolls to it
   // useEffect(() => {
@@ -49,42 +69,65 @@ const StackGraph = ({ currentStacks, setHover }) => {
 
   return (
     <div>
-      {stacks?.map((stack) => {
-        return (
-          <div
-            key={getRandomKey()}
-            id="full-chart-wrap"
-            style={{
-              marginTop: "3rem",
-              display: "flex",
-              height: "225px",
-              justifyContent: "center",
-              flexFlow: "row wrap",
-            }}
-          >
-            <div
-              id="stack-boxes"
-              style={{
-                position: "absolute",
-                display: "flex",
-                zIndex: "2",
-                flexGrow: "1",
-              }}
-            >
-              {stack?.skills?.map((s) => {
-                const growHeight = 33 + 41 * (s.level - 1);
+      <div
+        key={getRandomKey()}
+        id="full-chart-wrap"
+        style={{
+          marginTop: "3rem",
+          display: "flex",
+          height: "225px",
+          justifyContent: "center",
+          flexFlow: "row wrap",
+        }}
+      >
+        <div
+          id="stack-boxes"
+          style={{
+            position: "absolute",
+            // maxWidth: "80%",
+            display: "flex",
+            zIndex: "2",
+            flexGrow: "1",
+            // overflowX: "scroll",
+            // overflowY: "visible",
+            // paddingBottom: "17px",
+          }}
+        >
+          {stacks?.skills?.map((s) => {
+            const growHeight = 33 + 41 * (s.level - 1);
 
-                const stringHeight = growHeight.toString();
+            const stringHeight = growHeight.toString();
 
-                return (
+            return (
+              <OverlayTrigger
+                key={getRandomKey()}
+                placement={"bottom"}
+                overlay={
+                  <Tooltip id={`tooltip-${getRandomKey()}`}>
+                    {s.hoverDesc}
+                  </Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  // <Button
+                  //   variant="light"
+                  //   {...triggerHandler}
+                  //   className="d-inline-flex align-items-center"
+                  // >
+                  //   <Image
+                  //     ref={ref}
+                  //     roundedCircle
+                  //     src="holder.js/20x20?text=J&bg=28a745&fg=FFF"
+                  //   />
                   <div
                     id="skillBox"
-                    key={getRandomKey()}
+                    // key={getRandomKey()}
                     style={{
                       position: "relative",
                       marginTop: "-20px",
                     }}
-                    onMouseEnter={(e) => setHover(s.hoverDesc)}
+                    {...triggerHandler}
+                    // onMouseEnter={(e) => setHover(s.hoverDesc)}
                     // onMouseLeave={setHoverInfo("")}
                   >
                     <div
@@ -95,9 +138,10 @@ const StackGraph = ({ currentStacks, setHover }) => {
                     >
                       <div
                         id="slanted words defining the skill"
+                        ref={ref}
                         style={{
                           transform: "rotate(-45deg)",
-                          width: "80px",
+                          // width: "80px",
                           marginBottom: "10px",
                           textDecoration: "underline",
                           textAlign: "center",
@@ -113,7 +157,6 @@ const StackGraph = ({ currentStacks, setHover }) => {
                       }}
                     >
                       {" "}
-                      {/* {beginAnimation ? <></> : <></>} */}
                       <StackBars
                         id="stack-bars"
                         style={{
@@ -125,42 +168,49 @@ const StackGraph = ({ currentStacks, setHover }) => {
                       ></StackBars>
                     </div>{" "}
                   </div>
-                );
-              })}
-              <div
-                id="stack-backgroundRow-container"
-                style={{
-                  zIndex: "-1",
-                  overflowX: "hidden",
-                  marginTop: "1rem",
-                  position: "absolute",
-                  width: "100%",
-                }}
-              >
-                <Row className="table-spacing">
-                  <div className="background-bar" />
-                  <div className="number-pos">1</div>
-                </Row>
-                <Row className="table-spacing">
-                  <div className="background-bar" />
-                  <div className="number-pos">2</div>
-                </Row>
-                <Row className="table-spacing">
-                  <div className="background-bar" />
-                  <div className="number-pos">3</div>
-                </Row>
-                <Row className="table-spacing">
-                  <div className="background-bar" />
-                  <div className="number-pos">4</div>
-                </Row>
-                <Row className="table-spacing">
-                  <div className="background-bar" />
-                  <div className="number-pos">5</div>
-                </Row>
-              </div>
-            </div>
+                  // <span className="ms-1">Hover to see</span>
+                  // </Button>
+                )}
 
-            {/* <div
+                {/* <Button variant="secondary">Tooltip on {placement}</Button> */}
+              </OverlayTrigger>
+            );
+          })}
+          <div
+            id="stack-backgroundRow-container"
+            style={{
+              zIndex: "-1",
+              overflowX: "hidden",
+              marginTop: "1rem",
+              marginLeft: "2%",
+              position: "absolute",
+              width: "90%",
+            }}
+          >
+            <Row className="table-spacing">
+              <div className="background-bar" />
+              <div className="number-pos">1</div>
+            </Row>
+            <Row className="table-spacing">
+              <div className="background-bar" />
+              <div className="number-pos">2</div>
+            </Row>
+            <Row className="table-spacing">
+              <div className="background-bar" />
+              <div className="number-pos">3</div>
+            </Row>
+            <Row className="table-spacing">
+              <div className="background-bar" />
+              <div className="number-pos">4</div>
+            </Row>
+            <Row className="table-spacing">
+              <div className="background-bar" />
+              <div className="number-pos">5</div>
+            </Row>
+          </div>
+        </div>
+
+        {/* <div
             style={{
               marginTop: "230px",
               overflowWrap: "break-word",
@@ -168,9 +218,7 @@ const StackGraph = ({ currentStacks, setHover }) => {
             }}
           >
           </div> */}
-          </div>
-        );
-      })}
+      </div>
     </div>
   );
 };

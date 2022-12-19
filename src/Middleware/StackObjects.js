@@ -16,7 +16,7 @@ export const awsTools = {
       color: "#ff3399",
     },
     {
-      name: "DynamoDB",
+      name: "Dynamo",
       level: 4,
       hoverDesc: `Dynamo lets me store and retreive various
 			data sets without having to worry about future scaling.`,
@@ -45,18 +45,18 @@ export const awsTools = {
     	need; authorizing, aggregating, subscriptions, etc.`,
       color: "#ffa500",
     },
-    {
-      name: "CloudWatch",
-      level: 2,
-      hoverDesc: `Automatic server logging. Makes it very simple
-    	to debug what I did wrong.`,
-      color: "#ccffff",
-    },
+    // {
+    //   name: "CloudWatch",
+    //   level: 2,
+    //   hoverDesc: `Automatic server logging. Makes it very simple
+    // 	to debug what I did wrong.`,
+    //   color: "#ccffff",
+    // },
   ],
 };
 
-export const reactTools = {
-  title: "Non-AWS",
+export const frontend = {
+  title: "Frontend",
   skills: [
     {
       name: "JavaScript",
@@ -64,12 +64,7 @@ export const reactTools = {
       hoverDesc: `The best and worst language. These days it can do anything, and TypeScript is nice.`,
       color: "white",
     },
-    {
-      name: "CSS/HTML",
-      level: 3,
-      hoverDesc: `CSS can be a pain but once you get into the gutter, its just a flexbox away.`,
-      color: "#ff9966",
-    },
+
     {
       name: "React",
       level: 3,
@@ -98,10 +93,16 @@ export const reactTools = {
       with frameworks like Express. Luckily microservices give me a strong template to work with.`,
       color: "#009900",
     },
+    {
+      name: "CSS/HTML",
+      level: 3,
+      hoverDesc: `CSS can be a pain but once you get into the gutter, its just a flexbox away.`,
+      color: "#ff9966",
+    },
   ],
 };
-export const dustyTools = {
-  title: "Non-AWS",
+export const DAOther = {
+  title: "DA/Other",
   skills: [
     {
       name: "Electron",
@@ -134,28 +135,28 @@ export const dustyTools = {
   ],
 };
 
-export const futureTools = {
-  title: "Non-AWS",
-  skills: [
-    {
-      name: "Java/Spring",
-      level: 2,
-      hoverDesc: `As I said, seems like it can do it all, and I'd like to see why it's such staple in the modern era still.`,
-      color: "#66ff66",
-    },
-    {
-      name: "C++/Carbon",
-      level: 4,
-      hoverDesc: `C++ feels to be the foundation of many grand solutions, even if its hidden at the very bottom. With
-      Carbon looking to modernize the language, I'd love to create some foundations one day.`,
-      color: "#666666",
-    },
-    {
-      name: "Python/Pandas",
-      level: 4,
-      hoverDesc: `My first language. Used it to build a videogame. Then I discovered Pandas and data sets. For a while
-      I couldn't stop making data charts. It's been years since though.`,
-      color: "#ffff80",
-    },
-  ],
-};
+// export const futureTools = {
+//   title: "Non-AWS",
+//   skills: [
+//     {
+//       name: "Java/Spring",
+//       level: 2,
+//       hoverDesc: `As I said, seems like it can do it all, and I'd like to see why it's such staple in the modern era still.`,
+//       color: "#66ff66",
+//     },
+//     {
+//       name: "C++/Carbon",
+//       level: 4,
+//       hoverDesc: `C++ feels to be the foundation of many grand solutions, even if its hidden at the very bottom. With
+//       Carbon looking to modernize the language, I'd love to create some foundations one day.`,
+//       color: "#666666",
+//     },
+//     {
+//       name: "Python/Pandas",
+//       level: 4,
+//       hoverDesc: `My first language. Used it to build a videogame. Then I discovered Pandas and data sets. For a while
+//       I couldn't stop making data charts. It's been years since though.`,
+//       color: "#ffff80",
+//     },
+//   ],
+// };

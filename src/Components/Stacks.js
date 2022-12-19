@@ -1,57 +1,49 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { List, ListItem, Button } from "react95";
-import {
-  awsTools,
-  reactTools,
-  dustyTools,
-  futureTools,
-} from "../Middleware/StackObjects";
+import { awsTools, DAOther, frontend } from "../Middleware/StackObjects";
 import "../Styles/Stacks.css";
 // import styled, { keyframes } from "styled-components";
 import MiniDesc from "./MiniDesc";
 import StackGraph from "./StackGraph";
 
 const Stacks = () => {
-  const [currentStacks, setCurrentStacks] = useState([awsTools, reactTools]);
+  const [currentStacks, setCurrentStacks] = useState(frontend);
   const [hover, setHover] = useState("");
   return (
-    <Container style={{ height: "110vh" }}>
-      <Row>
-        <Col>{/* logan spacing */}</Col>
-        <Col>{/* nav spacing */}</Col>
-      </Row>
+    <Container
+      style={{ height: "100vh", marginTop: "18rem", marginBottom: "-18rem" }}
+    >
       <Row>
         <Col>
-          <Row>{/* for spacing */}</Row>
           {/* bottom for animation is 18rem, top is below */}
           <Row
             style={{
-              paddingTop: "18rem",
               alignItems: "center",
               justifyContent: "center",
-              scrollMarginTop: "-5em",
+
+              scrollMarginTop: "20rem",
             }}
             id="stacks"
           >
             <div style={{ textAlign: "center" }}>here are my stacks;</div>
             <Button
               style={{ marginTop: ".5rem", marginRight: ".5rem" }}
-              onClick={() => setCurrentStacks([awsTools, reactTools])}
+              onClick={() => setCurrentStacks(frontend)}
             >
-              Working
+              Frontend
             </Button>
             <Button
               style={{ marginTop: ".5rem", marginRight: ".5rem" }}
-              onClick={() => setCurrentStacks([dustyTools])}
+              onClick={() => setCurrentStacks(awsTools)}
             >
-              Dusty
+              AWS
             </Button>
             <Button
               style={{ marginTop: ".5rem", marginRight: ".5rem" }}
-              onClick={() => setCurrentStacks([futureTools])}
+              onClick={() => setCurrentStacks(DAOther)}
             >
-              Future
+              DA/Other
             </Button>
           </Row>
           <Row>
@@ -69,7 +61,7 @@ const Stacks = () => {
               >
                 Hover over each tool to learn why I'm using it below.
               </div>
-              <MiniDesc hover={hover} />
+              {/* <MiniDesc hover={hover} /> */}
               <StackGraph setHover={setHover} currentStacks={currentStacks} />
             </Col>
           </Row>

@@ -12,7 +12,12 @@ const Header = () => {
   }, []);
 
   return (
-    <Navbar expanded={collapse} onSelect={() => setCollapse(false)} expand="lg">
+    <Navbar
+      expanded={collapse}
+      onSelect={() => setCollapse(false)}
+      expand="lg"
+      style={{ marginBottom: "10%" }}
+    >
       <Container style={{ color: "white" }}>
         <Navbar.Brand
           href="/#landing"
@@ -24,7 +29,7 @@ const Header = () => {
         >
           <span
             style={{
-              fontSize: "2vmin",
+              fontSize: "2.5vmin",
               marginRight: "2%",
               color: "white",
             }}
@@ -38,7 +43,7 @@ const Header = () => {
           style={{
             position: "absolute",
             fontSize: "7vmin",
-            marginTop: collapse ? "47vmin" : "15vmin",
+            marginTop: collapse ? "57vmin" : "15vmin",
             marginLeft: "9%",
             color: "white",
           }}
@@ -49,9 +54,12 @@ const Header = () => {
           style={{ color: "white", backgroundColor: "white" }}
           onClick={() => setCollapse((collapse) => !collapse)}
         />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          style={{ backgroundColor: collapse ? "#30153c" : "" }}
+        >
           <Nav className="me-4">
-            <Nav.Link style={{ color: "white" }}>
+            <Nav.Link disabled style={{ color: "white", fontSize: "2vmin" }}>
               logan.duncan512@gmail.com
             </Nav.Link>
             <Nav.Link
@@ -59,8 +67,9 @@ const Header = () => {
               style={{
                 color: "white",
                 position: "absolute",
-                marginTop: collapse ? "4%" : "2%",
-                marginBottom: collapse ? "6%" : "",
+                marginTop: collapse ? "6%" : "2%",
+                // marginBottom: collapse ? "6%" : "",
+                fontSize: "2vmin",
               }}
             >
               Github
@@ -71,7 +80,7 @@ const Header = () => {
               href="/#landing"
               className="lightLink"
               style={{
-                marginTop: collapse ? "3%" : "",
+                marginTop: collapse ? "4%" : "",
               }}
             >
               Top

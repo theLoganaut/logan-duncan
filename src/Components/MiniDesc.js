@@ -4,10 +4,10 @@ const MiniDesc = ({ hover }) => {
       style={{
         marginTop: ".5rem",
         textAlign: "center",
-        maxWidth: "400px",
+        width: "50%",
         minHeight: "100px",
-        marginLeft: "50%",
-        transform: "translateX(-50%)",
+        // marginLeft: "50%",
+        transform: "translateX(50%)",
       }}
     >
       {hover}

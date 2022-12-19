@@ -1,5 +1,7 @@
 .ptmSlideIn {
   animation: slide-to-left 2s both;
+  width: fit-content !important;
+  height: fit-content !important;
 }
 
 @keyframes slide-to-left {

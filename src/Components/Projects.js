@@ -5,6 +5,7 @@ import "@aws-amplify/ui-react/styles.css";
 import { authComponents, authFormFields } from "./FakePTMAuth";
 import "../Styles/Animations.css";
 import LazyLoad from "react-lazy-load";
+import PTMImg from "../Images/pushThatMountainLogin.png";
 
 const Projects = () => {
   const lightyellow = "#F3EEC3";
@@ -111,12 +112,20 @@ const Projects = () => {
   };
 
   return (
-    <Container id="projects" style={{ height: "100vh" }}>
-      <Row></Row>
+    <Container
+      id="projects"
+      style={{ height: "100vh", scrollMarginTop: "20rem" }}
+    >
       <Row>
-        <Col>
+        <Col style={{ marginRight: "-20%" }}>
           <Row
-            style={{ marginTop: "18rem", maxWidth: "25vw", marginLeft: "10%" }}
+            style={{
+              // marginTop: "20vw",
+              width: "70%",
+              margin: "auto",
+              justifyContent: "center",
+              display: "flex",
+            }}
           >
             <div style={{ textAlign: "center" }}>
               and this is Push that Mountain!
@@ -140,17 +149,38 @@ const Projects = () => {
               .
             </div>
           </Row>
-          <Row></Row>
         </Col>
-        <Col>
+        <Col
+          style={{ justifyContent: "center", display: "flex", marginTop: "2%" }}
+          lg={true}
+        >
           <LazyLoad threshold={0.5} width={400}>
-            <div style={{ marginTop: "40%" }} className="ptmSlideIn">
-              <ThemeProvider theme={testTheme}>
-                <Authenticator
-                  formFields={authFormFields}
-                  components={authComponents}
-                ></Authenticator>
-              </ThemeProvider>
+            <div
+              style={{ justifyContent: "center", display: "flex" }}
+              className="ptmSlideIn"
+            >
+              <img
+                alt="Push that Mountain"
+                src={PTMImg}
+                style={{
+                  // width: "25vw",
+                  justifyContent: "center",
+                  display: "flex",
+                  margin: "auto",
+                  width: "100%",
+                }}
+              />
+              {/* <ThemeProvider theme={testTheme}>
+                  <Authenticator
+                    style={{
+                      maxHeight: "100px",
+                      maxWidth: "100px",
+                      overflow: "hidden",
+                    }}
+                    formFields={authFormFields}
+                    components={authComponents}
+                  ></Authenticator>
+                </ThemeProvider> */}
             </div>
           </LazyLoad>
         </Col>

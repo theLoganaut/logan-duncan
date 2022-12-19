@@ -78,7 +78,7 @@ function App() {
       id="landing"
       fluid
       style={{
-        width: onMobile ? "900px" : "100%",
+        // width: onMobile ? "900px" : "100%",
         height: "auto",
         backgroundColor: "#30153c",
       }}
@@ -122,7 +122,7 @@ function App() {
         >
           {doneLoading ? (
             <ThemeProvider theme={original}>
-              <Modal
+              {/* <Modal
                 style={{ color: "black" }}
                 show={showModal}
                 onHide={handleClose}
@@ -137,14 +137,13 @@ function App() {
                     Close
                   </Button>
                 </Modal.Footer>
-              </Modal>
+              </Modal> */}
               <div
                 className="headerDrop"
                 style={{
                   position: "sticky",
                   top: "2rem",
                   zIndex: "2",
-                  // height: "-10vh",
                 }}
               >
                 <Header />

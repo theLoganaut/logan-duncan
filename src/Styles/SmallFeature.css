@@ -1,7 +1,7 @@
 .lightLink {
   color: white !important;
   margin-right: 1em;
-  font-size: 140%;
+  font-size: 2.5vmin !important;
 }
 .circle { 
   width: 20vw;
@@ -15,4 +15,9 @@
   content: "";
   display: flex;
   padding-bottom: 100%;
+}
+
+.ptmSizing {
+  max-width: fit-content !important;
+  max-height: fit-content !important;
 }
