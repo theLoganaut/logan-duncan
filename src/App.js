@@ -15,29 +15,37 @@ import Stacks from "./Components/Stacks";
 import LogoD from "./Images/Adobe-D-sm.svg";
 import LogoL from "./Images/Adobe-L-sm.svg";
 import bigBang from "./Images/New-BG-sm.svg";
+import pixelTTF from "./Images/VT323-Regular.ttf";
 import "./Styles/LoadingAnimation.scss";
-import "./index.css";
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
   @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif}') format('woff2');
-    font-weight: 400;
-    font-style: normal
-  }
-  @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif_bold}') format('woff2');
-    font-weight: bold;
-    font-style: normal
+    font-family: "pixelFont";
+    src: url(${pixelTTF}) format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: auto;
   }
   body {
     letter-spacing: 0.07em;
-    font-family: 'ms_sans_serif';
+    font-family: pixelFont;
     color: white;
   }
 `;
+
+// @font-face {
+//   font-family: 'ms_sans_serif';
+//   src: url('${ms_sans_serif}') format('woff2');
+//   font-weight: 400;
+//   font-style: normal
+// }
+// @font-face {
+//   font-family: 'ms_sans_serif';
+//   src: url('${ms_sans_serif_bold}') format('woff2');
+//   font-weight: bold;
+//   font-style: normal
+// }
 
 function App() {
   const [loadingState, setLoadingState] = useState("atomSmash");
@@ -79,6 +87,7 @@ function App() {
       fluid
       style={{
         // width: onMobile ? "900px" : "100%",
+        // fontFamily: pixelFont,
         height: "auto",
         backgroundColor: "#30153c",
       }}
@@ -121,7 +130,7 @@ function App() {
           }}
         >
           {doneLoading ? (
-            <ThemeProvider theme={original}>
+            <ThemeProvider theme={GlobalStyles}>
               {/* <Modal
                 style={{ color: "black" }}
                 show={showModal}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "../Styles/SmallFeature.css";
+// import "../index.css";
 
 const Header = () => {
   const [collapse, setCollapse] = useState(false);
@@ -41,6 +42,7 @@ const Header = () => {
         <Navbar.Brand
           href="/#landing"
           style={{
+            fontFamily: "pixelFont",
             position: "absolute",
             fontSize: "7vmin",
             marginTop: collapse ? "57vmin" : "15vmin",
