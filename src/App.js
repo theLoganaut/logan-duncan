@@ -1,20 +1,15 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Container, Row, Modal, Button } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Header from "./Components/Header";
 import Landing from "./Components/Landing";
 import AboutMe from "./Components/AboutMe";
 import Projects from "./Components/Projects";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { styleReset } from "react95";
-import original from "react95/dist/themes/original";
-// original Windows95 font (optionally)
-import ms_sans_serif from "react95/dist/fonts/ms_sans_serif.woff2";
-import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
 import Stacks from "./Components/Stacks";
 import LogoD from "./Images/Adobe-D-sm.svg";
 import LogoL from "./Images/Adobe-L-sm.svg";
-import bigBang from "./Images/New-BG-sm.svg";
 import pixelTTF from "./Images/VT323-Regular.ttf";
 import "./Styles/LoadingAnimation.scss";
 
@@ -34,6 +29,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+// base fonts incase i screw up
 // @font-face {
 //   font-family: 'ms_sans_serif';
 //   src: url('${ms_sans_serif}') format('woff2');
@@ -52,19 +48,8 @@ function App() {
 
   const [doneLoading, setDoneLoading] = useState(false);
 
-  const [onMobile, setOnMobile] = useState(false);
-
-  const [showModal, setShowModal] = useState(false);
-
-  const handleClose = () => setShowModal(false);
-
   useEffect(() => {
     console.log(window.innerWidth);
-
-    if (window.innerHeight < 900) {
-      setOnMobile(true);
-      setShowModal(true);
-    }
 
     const logoSmash = document.getElementById("letterL");
 
@@ -77,17 +62,13 @@ function App() {
     bigBang?.addEventListener("animationend", () => {
       setDoneLoading(true);
     });
-
-    console.log(onMobile, window.innerWidth);
-  }, [loadingState, onMobile]);
+  }, [loadingState]);
 
   return (
     <Container
-      id="landing"
+      id="top"
       fluid
       style={{
-        // width: onMobile ? "900px" : "100%",
-        // fontFamily: pixelFont,
         height: "auto",
         backgroundColor: "#30153c",
       }}
@@ -117,36 +98,9 @@ function App() {
       )}
 
       {loadingState === "expansion" ? (
-        <Container
-          fluid
-          id="bigBang"
-          className="bigBang"
-          style={{
-            minHeight: "100vh",
-            width: "100%",
-            backgroundImage: `url(${bigBang})`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "100%",
-          }}
-        >
+        <Container fluid id="bigBang" className="bigBang">
           {doneLoading ? (
             <ThemeProvider theme={GlobalStyles}>
-              {/* <Modal
-                style={{ color: "black" }}
-                show={showModal}
-                onHide={handleClose}
-              >
-                <Modal.Body>
-                  <a href="#landing">
-                    <span style={{ color: "lightblue" }}>here.</span>
-                  </a>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </Modal> */}
               <div
                 className="headerDrop"
                 style={{

@@ -19,11 +19,6 @@
   grid-column-gap: 1em;
 }
 
-.equisize div {
-  /* border: 1px solid black; */
-  /* padding: 0.5em; */
-}
-
 .stack-bars.OutViewport {
   text-align: center;
 }

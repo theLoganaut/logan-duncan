@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import "../Styles/SmallFeature.css";
-// import "../index.css";
 
 const Header = () => {
   const [collapse, setCollapse] = useState(false);
@@ -21,7 +20,7 @@ const Header = () => {
     >
       <Container style={{ color: "white" }}>
         <Navbar.Brand
-          href="/#landing"
+          href="/#top"
           style={{
             fontSize: "7vmin",
             marginLeft: "7%",
@@ -40,7 +39,7 @@ const Header = () => {
           Logan
         </Navbar.Brand>
         <Navbar.Brand
-          href="/#landing"
+          href="/#top"
           style={{
             fontFamily: "pixelFont",
             position: "absolute",
@@ -79,7 +78,7 @@ const Header = () => {
           </Nav>
           <Nav>
             <Nav.Link
-              href="/#landing"
+              href="/#top"
               className="lightLink"
               style={{
                 marginTop: collapse ? "4%" : "",

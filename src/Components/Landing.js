@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import LunarPhases from "./LunarPhases";
 
 const Landing = () => {
+  // ? keeping this here for possible future use? maybe ineffecient tho
   // const [windowOffest, setWindowOffest] = useState(0);
 
   // useEffect(() => {
@@ -17,7 +17,6 @@ const Landing = () => {
       style={{
         height: `100vh`,
         // marginTop: `${windowOffest}px`,
-        marginTop: "10%",
       }}
     >
       <Row>
@@ -27,7 +26,6 @@ const Landing = () => {
               style={{
                 textAlign: "center",
                 fontSize: "18px",
-                // fontSize: "4vmin",
               }}
             >
               a self-taught developer with a knack for designing and a love of

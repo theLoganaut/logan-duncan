@@ -45,17 +45,6 @@ const AboutMe = () => {
                   }}
                 />
                 <div className="circle visor"></div>
-                {/* 
-              <img
-                src="/mockLoganaut.png"
-                alt="My Headshot"
-                style={{
-                  position: "absolute",
-                  maxHeight: "30vh",
-                  maxWidth: "30vw",
-                  border: "2px solid red",
-                }}
-              /> */}
               </div>{" "}
             </Container>
           </Col>

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Row, OverlayTrigger, Tooltip } from "react-bootstrap";
 import styled, { keyframes } from "styled-components";
 import shortid from "shortid";
-import Carousel from "react-multi-carousel";
+// import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const grow = (stringHeight) => keyframes`
@@ -22,7 +22,7 @@ const StackBars = styled.div`
   background-color: ${(props) => props.color};
 `;
 
-const StackGraph = ({ currentStacks, setHover }) => {
+const StackGraph = ({ currentStacks }) => {
   let stacks = currentStacks;
   console.log(stacks);
 
@@ -30,23 +30,24 @@ const StackGraph = ({ currentStacks, setHover }) => {
     return shortid.generate();
   };
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3, // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2, // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-    },
-  };
+  // ? maybe carousel for larger stack table
+  // const responsive = {
+  //   desktop: {
+  //     breakpoint: { max: 3000, min: 1024 },
+  //     items: 3,
+  //     slidesToSlide: 3, // optional, default to 1.
+  //   },
+  //   tablet: {
+  //     breakpoint: { max: 1024, min: 464 },
+  //     items: 2,
+  //     slidesToSlide: 2, // optional, default to 1.
+  //   },
+  //   mobile: {
+  //     breakpoint: { max: 464, min: 0 },
+  //     items: 1,
+  //     slidesToSlide: 1, // optional, default to 1.
+  //   },
+  // };
 
   // const [beginAnimation, setBeginAnimation] = useState(false);
   // ? getting the animation to pause when it scrolls to it
@@ -168,11 +169,7 @@ const StackGraph = ({ currentStacks, setHover }) => {
                       ></StackBars>
                     </div>{" "}
                   </div>
-                  // <span className="ms-1">Hover to see</span>
-                  // </Button>
                 )}
-
-                {/* <Button variant="secondary">Tooltip on {placement}</Button> */}
               </OverlayTrigger>
             );
           })}
@@ -209,15 +206,6 @@ const StackGraph = ({ currentStacks, setHover }) => {
             </Row>
           </div>
         </div>
-
-        {/* <div
-            style={{
-              marginTop: "230px",
-              overflowWrap: "break-word",
-              maxWidth: "500px",
-            }}
-          >
-          </div> */}
       </div>
     </div>
   );
