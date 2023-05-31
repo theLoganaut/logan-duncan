@@ -66,7 +66,7 @@ export const frontend = {
     },
 
     {
-      name: "React",
+      name: "React/ReactNative",
       level: 3,
       hoverDesc: `My "framework" of choice. JSX creates a simpler solution than .vue files, and Angular
       has a lot of bloat that I wouldn't use.`,

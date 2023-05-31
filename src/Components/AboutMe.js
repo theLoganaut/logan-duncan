@@ -20,10 +20,8 @@ const AboutMe = () => {
             style={{
               textAlign: "center",
               marginRight: "-25%",
-              // marginLeft: "20%",
             }}
           >
-            {/* testing border offset */}
             <Container fluid>
               <div
                 style={{
@@ -31,31 +29,23 @@ const AboutMe = () => {
                   height: "100%",
                   display: "flex",
                   justifyContent: "center",
-                  // marginTop: "15rem",
                   marginLeft: "-5%",
+                  borderWidth: 4,
+                  borderColor: "white",
                 }}
               >
                 <img
-                  src="/mockLoganaut.png"
+                  src="/myPortrait.png"
                   alt="My Headshot"
                   style={{
                     borderRadius: "50%",
+                    borderWidth: 4,
+                    borderColor: "white",
                     position: "absolute",
-                    width: "20vw",
+                    width: "25vw",
                   }}
                 />
                 <div className="circle visor"></div>
-                {/* 
-              <img
-                src="/mockLoganaut.png"
-                alt="My Headshot"
-                style={{
-                  position: "absolute",
-                  maxHeight: "30vh",
-                  maxWidth: "30vw",
-                  border: "2px solid red",
-                }}
-              /> */}
               </div>{" "}
             </Container>
           </Col>
@@ -72,26 +62,19 @@ const AboutMe = () => {
                 }}
               >
                 <div>
-                  <div>
-                    {/* and I've always been fascinated by the wonders developers
-                    can create. Memory lane is filled with things that can only
-                    come from writing that code. A specific one sticks out to me
-                    though, an always-online civilization-like browser games
-                    called Ironfell. When it went offline I made it one of my
-                    goals to build it again. */}
+                  <div style={{ marginTop: "1rem" }}>
+                    and I write some code. Well more like a lot. Did I finish
+                    all my hobby projects? No. Did I learn and build myself into
+                    a programmer ready for a career? Absolutely.
                   </div>
                   <div style={{ marginTop: "1rem" }}>
-                    More recently, I’ve been developing my full stack skill set
-                    and rounding out my skills as a future software engineer.
-                    Building with React and shipping to an AWS backend makes a
-                    single man ship easy to run.
+                    Currently working on a React Native app and exploring
+                    Kotlin/Swift. That's just one of my paths; it's alongside
+                    Python, some .NET, and a lot of AWS. Ready and waiting to
+                    join your team and help develop something awesome!
                   </div>
                   <div style={{ marginTop: "1rem" }}>
                     Check out my stacks for more information!
-                  </div>
-                  <div style={{ marginTop: "1rem" }}>
-                    Oh and I'm a huge fan of the 90's aesthetic if you can't
-                    tell.
                   </div>
                 </div>
               </div>

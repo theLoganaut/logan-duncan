@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import "../Styles/SmallFeature.css";
 
 const Header = () => {
   const [collapse, setCollapse] = useState(false);
 
-  useEffect(() => {
-    if (window.innerWidth > 500) {
-      setCollapse(false);
-    }
-  }, []);
-
   return (
     <Navbar
       expanded={collapse}
-      onSelect={() => setCollapse(false)}
+      // collapseOnSelect={true}
       expand="lg"
       style={{ marginBottom: "10%" }}
     >
@@ -22,14 +16,14 @@ const Header = () => {
         <Navbar.Brand
           href="/#landing"
           style={{
-            fontSize: "7vmin",
+            fontSize: "10vmin",
             marginLeft: "7%",
             color: "white",
           }}
         >
           <span
             style={{
-              fontSize: "2.5vmin",
+              fontSize: "4vmin",
               marginRight: "2%",
               color: "white",
             }}
@@ -43,7 +37,7 @@ const Header = () => {
           style={{
             position: "absolute",
             fontSize: "7vmin",
-            marginTop: collapse ? "57vmin" : "15vmin",
+            marginTop: collapse ? "50vmin" : "15vmin",
             marginLeft: "9%",
             color: "white",
           }}
@@ -52,7 +46,11 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle
           style={{ color: "white", backgroundColor: "white" }}
-          onClick={() => setCollapse((collapse) => !collapse)}
+          onClick={() =>
+            setTimeout(() => {
+              setCollapse((collapse) => !collapse);
+            }, 150)
+          }
         />
         <Navbar.Collapse
           id="responsive-navbar-nav"
@@ -67,7 +65,7 @@ const Header = () => {
               style={{
                 color: "white",
                 position: "absolute",
-                marginTop: collapse ? "6%" : "2%",
+                marginTop: collapse ? "4%" : "2%",
                 // marginBottom: collapse ? "6%" : "",
                 fontSize: "2vmin",
               }}
@@ -77,21 +75,50 @@ const Header = () => {
           </Nav>
           <Nav>
             <Nav.Link
-              href="/#landing"
+              href="#landing"
               className="lightLink"
               style={{
                 marginTop: collapse ? "4%" : "",
               }}
+              onClick={() =>
+                setTimeout(() => {
+                  setCollapse((collapse) => !collapse);
+                }, 350)
+              }
             >
               Top
             </Nav.Link>
-            <Nav.Link href="/#aboutme" className="lightLink">
+            <Nav.Link
+              onClick={() =>
+                setTimeout(() => {
+                  setCollapse((collapse) => !collapse);
+                }, 350)
+              }
+              href="#aboutme"
+              className="lightLink"
+            >
               About Me
             </Nav.Link>
-            <Nav.Link href="/#projects" className="lightLink">
+            <Nav.Link
+              onClick={() =>
+                setTimeout(() => {
+                  setCollapse((collapse) => !collapse);
+                }, 350)
+              }
+              href="#projects"
+              className="lightLink"
+            >
               Projects
             </Nav.Link>
-            <Nav.Link href="/#stacks" className="lightLink">
+            <Nav.Link
+              onClick={() =>
+                setTimeout(() => {
+                  setCollapse((collapse) => !collapse);
+                }, 350)
+              }
+              href="#stacks"
+              className="lightLink"
+            >
               Stacks
             </Nav.Link>
           </Nav>

@@ -1,15 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { List, ListItem, Button } from "react95";
+import { Button } from "react95";
 import { awsTools, DAOther, frontend } from "../Middleware/StackObjects";
 import "../Styles/Stacks.css";
 // import styled, { keyframes } from "styled-components";
-import MiniDesc from "./MiniDesc";
 import StackGraph from "./StackGraph";
 
 const Stacks = () => {
   const [currentStacks, setCurrentStacks] = useState(frontend);
-  const [hover, setHover] = useState("");
   return (
     <Container
       style={{ height: "100vh", marginTop: "18rem", marginBottom: "-18rem" }}
@@ -62,7 +60,7 @@ const Stacks = () => {
                 Hover over each tool to learn why I'm using it below.
               </div>
               {/* <MiniDesc hover={hover} /> */}
-              <StackGraph setHover={setHover} currentStacks={currentStacks} />
+              <StackGraph currentStacks={currentStacks} />
             </Col>
           </Row>
         </Col>

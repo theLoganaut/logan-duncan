@@ -1,17 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import LunarPhases from "./LunarPhases";
 
 const Landing = () => {
-  // const [windowOffest, setWindowOffest] = useState(0);
-
-  // useEffect(() => {
-  //   let topDist =
-  //     window.pageYOffset +
-  //     document.getElementById("landing").getBoundingClientRect().top;
-  //   setWindowOffest(topDist);
-  // }, []);
-
   return (
     <Container
       style={{

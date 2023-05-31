@@ -1,40 +1,41 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Container, Row, Modal, Button } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Header from "./Components/Header";
 import Landing from "./Components/Landing";
 import AboutMe from "./Components/AboutMe";
 import Projects from "./Components/Projects";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { styleReset } from "react95";
 import original from "react95/dist/themes/original";
-// original Windows95 font (optionally)
-import ms_sans_serif from "react95/dist/fonts/ms_sans_serif.woff2";
-import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
+import ms_sans_serif from "./Images/VT323-Regular.ttf";
+// import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
 import Stacks from "./Components/Stacks";
 import LogoD from "./Images/Adobe-D-sm.svg";
 import LogoL from "./Images/Adobe-L-sm.svg";
 import bigBang from "./Images/New-BG-sm.svg";
 import "./Styles/LoadingAnimation.scss";
-import "./index.css";
+
+const pixelFont = ms_sans_serif;
+
+// const pixelBold = ms_sans_serif_bold;
+
+// @font-face {
+//   font-family: 'pixelFont';
+//   src: url('${pixelBold}') format('woff2');
+//   font-weight: bold;
+//   font-style: normal
+//  }
 
 const GlobalStyles = createGlobalStyle`
-  ${styleReset}
   @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif}') format('woff2');
+    font-family: 'pixelFont';
+    src: url('${pixelFont}') format('woff2');
     font-weight: 400;
-    font-style: normal
-  }
-  @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif_bold}') format('woff2');
-    font-weight: bold;
     font-style: normal
   }
   body {
     letter-spacing: 0.07em;
-    font-family: 'ms_sans_serif';
+    font-family: 'pixelFont';
     color: white;
   }
 `;
@@ -44,19 +45,8 @@ function App() {
 
   const [doneLoading, setDoneLoading] = useState(false);
 
-  const [onMobile, setOnMobile] = useState(false);
-
-  const [showModal, setShowModal] = useState(false);
-
-  const handleClose = () => setShowModal(false);
-
   useEffect(() => {
     console.log(window.innerWidth);
-
-    if (window.innerHeight < 900) {
-      setOnMobile(true);
-      setShowModal(true);
-    }
 
     const logoSmash = document.getElementById("letterL");
 
@@ -69,9 +59,7 @@ function App() {
     bigBang?.addEventListener("animationend", () => {
       setDoneLoading(true);
     });
-
-    console.log(onMobile, window.innerWidth);
-  }, [loadingState, onMobile]);
+  }, [loadingState]);
 
   return (
     <Container
@@ -81,6 +69,7 @@ function App() {
         // width: onMobile ? "900px" : "100%",
         height: "auto",
         backgroundColor: "#30153c",
+        fontSize: "20px",
       }}
     >
       <GlobalStyles />
@@ -122,22 +111,6 @@ function App() {
         >
           {doneLoading ? (
             <ThemeProvider theme={original}>
-              {/* <Modal
-                style={{ color: "black" }}
-                show={showModal}
-                onHide={handleClose}
-              >
-                <Modal.Body>
-                  <a href="#landing">
-                    <span style={{ color: "lightblue" }}>here.</span>
-                  </a>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </Modal> */}
               <div
                 className="headerDrop"
                 style={{
