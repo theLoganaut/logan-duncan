@@ -49,6 +49,7 @@ const Stacks = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
+                // width: "80%",
               }}
             >
               <div

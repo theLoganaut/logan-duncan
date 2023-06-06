@@ -73,9 +73,9 @@ const AboutMe = () => {
                     Python, some .NET, and a lot of AWS. Ready and waiting to
                     join your team and help develop something awesome!
                   </div>
-                  <div style={{ marginTop: "1rem" }}>
+                  {/* <div style={{ marginTop: "1rem" }}>
                     Check out my stacks for more information!
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Row>

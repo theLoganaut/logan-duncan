@@ -77,7 +77,9 @@ const StackGraph = ({ currentStacks }) => {
           display: "flex",
           height: "225px",
           justifyContent: "center",
+          alignSelf: "center",
           flexFlow: "row wrap",
+          // width: "50%",
         }}
       >
         <div

@@ -238,7 +238,7 @@ const LunarPhases = ({ restart }) => {
       </div>
 
       <div style={{ textAlign: "center" }}>
-        We're currently {lunarAge?.toFixed(1)} days into the lunar cycle,
+        We're {Math.floor(lunarAge?.toFixed(1))} days into the lunar cycle,
         currently in the
         <span> {getLunarPhase(lunarAge)}</span>. <br /> And here's a fun fact,
         there's no such thing as a 'Half Moon'!
